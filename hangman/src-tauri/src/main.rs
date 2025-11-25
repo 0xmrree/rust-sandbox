@@ -1,9 +1,40 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+// ============================================================================
+// DEPENDENCY IMPORTS (External Crates)
+// ============================================================================
+// These "use" statements import functionality from external Rust libraries (crates).
+// 
+// HOW DEPENDENCIES ARE INSTALLED:
+// 1. Dependencies are declared in Cargo.toml under [dependencies]
+// 2. When you run "cargo build" or "cargo run", Cargo automatically:
+//    - Downloads the crates from crates.io (Rust's package registry)
+//    - Compiles them
+//    - Links them to your project
+// 3. The compiled dependencies are cached in the "target/" directory
+//
+// IMPORTED CRATES:
+
+// rand::Rng - Random number generation trait
+// Source: "rand = "0.8"" in Cargo.toml
+// Used for: Randomly selecting a word from our word list
 use rand::Rng;
+
+// serde - Serialization/Deserialization framework
+// Source: "serde = { version = "1.0", features = ["derive"] }" in Cargo.toml
+// Used for: Converting Rust structs to/from JSON for communication with the frontend
+// The Deserialize and Serialize traits allow automatic JSON conversion
 use serde::{Deserialize, Serialize};
+
+// std::sync::Mutex - Standard library (built-in, no Cargo.toml entry needed)
+// Source: Rust standard library (always available)
+// Used for: Thread-safe access to shared game state across multiple requests
 use std::sync::Mutex;
+
+// tauri::State - Tauri framework's state management
+// Source: "tauri = { version = "1.5", features = ["shell-open"] }" in Cargo.toml
+// Used for: Accessing shared application state in Tauri command handlers
 use tauri::State;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
