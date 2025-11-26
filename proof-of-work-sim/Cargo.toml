@@ -1,0 +1,9 @@
+[package]
+name = "proof-of-work-sim"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sha2 = "0.10"      # For SHA-256 hashing
+rand = "0.8"       # For random nonce generation
+hex = "0.4"        # For hex encoding
