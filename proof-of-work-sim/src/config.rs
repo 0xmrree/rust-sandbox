@@ -10,7 +10,7 @@ pub struct Config {
 impl Config {
     pub fn default() -> Self {
         Config {
-            ceiling: i32::MAX/1.02, // Default: almost always mine successfully
+            ceiling: i32::MAX, // Default: almost always mine successfully
             delay_seconds: 1,
         }
     }
